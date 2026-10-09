@@ -1,3 +1,23 @@
+
+
+Skip to content
+Using Gmail with screen readers
+3 of 115
+(no subject)
+Inbox
+
+stephenpaul.com <stephenmeridian.com@gmail.com>
+Attachments
+Oct 7, 2026, 10:15 AM (1 day ago)
+to me
+
+
+Best Regards,
+STEPHEN PAUL
+Executive Search Consultant I Talent Acquisition Consultant | Executive Recruitment Specialist
+
+ One attachment
+  •  Scanned by Gmail
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -299,13 +319,6 @@ ul{margin:0;padding:0;list-style:none}
 .portrait .rmark{position:absolute;height:90%;right:-10%;top:5%;color:var(--gold);opacity:.14}
 .portrait span{font-family:var(--serif);font-size:clamp(3.4rem,6vw,5.5rem);letter-spacing:.06em;color:var(--stone);position:relative}
 .portrait small{position:absolute;left:14px;bottom:12px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.portrait img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  display: block;
-}
 .light .portrait,.stone .portrait{border-color:var(--hair)}
 .team-t1 .portrait{max-width:420px}
 .person h3{font-size:clamp(1.9rem,3vw,2.6rem)}
@@ -625,11 +638,15 @@ button.btn[type=submit]::after,.wnav .btn::after{display:inline}
 'use strict';
 /* ---------- CONFIG: edit before launch ---------- */
 const CONFIG = {
+  // Set to a real, secure form-handling endpoint before launch. Until then forms do not transmit anything.
   formEndpoint: '',
+  // Official channels. Replace placeholders with verified details.
   officialEmail: '[official firm email]',
   officialPhone: '[official firm telephone]',
   officialDomain: '[official firm domain]',
+  // Show unverified figures as [XX] placeholders during review. Set false to publish ONLY verified figures.
   showPlaceholderFigures: false,
+  // DESIGN PREVIEW ONLY: shows randomly chosen SAMPLE values, each labelled as a sample. Set to false before launch.
   useSampleFigures: true
 };
 const FIGURES = [
@@ -654,14 +671,14 @@ const NAV=[['Firm','firm'],['Executive Search','executive-search'],['Board Searc
 
 /* ---------- DATA ---------- */
 const TEAM={
- lead:{n:'George Royce',e:'professional.georgeroyce@gmail.com',r:'Founder & Managing Director | Senior Executive Search Consultant',f:['Board Search','Executive & C-Suite Appointments','Leadership Advisory'],img:'assets/team/george-royce.jpg'},
+ lead:{n:'George Royce',e:'professional.georgeroyce@gmail.com',r:'Founder & Managing Director | Senior Executive Search Consultant',f:['Board Search','Executive & C-Suite Appointments','Leadership Advisory']},
  senior:[
-  {n:'Pius Excel',e:'partner.piusexcel@gmail.com',r:'Senior Executive Search Consultant | Practice Leader',f:['Financial Services','Private Equity','Corporate Development'],img:'assets/team/pius-excel.jpg'},
-  {n:'Alex Jefferson',e:'alexjefferson.uk@gmail.com',r:'Senior Executive Search Consultant',f:['Technology','Innovation','Digital Transformation'],img:'assets/team/alex-jefferson.jpg'}],
+  {n:'Pius Excel',e:'partner.piusexcel@gmail.com',r:'Senior Executive Search Consultant | Practice Leader',f:['Financial Services','Private Equity','Corporate Development']},
+  {n:'Alex Jefferson',e:'alexjefferson.uk@gmail.com',r:'Senior Executive Search Consultant',f:['Technology','Innovation','Digital Transformation']}],
  spec:[
-  {n:'Cynthia Merlinda',e:'merlindacynthia@gmail.com',r:'Executive Search Consultant | Search & Intelligence Partner',f:['Industrial','Energy','Infrastructure'],img:'assets/team/cynthia-merlinda.jpg'},
-  {n:'Mitchell David',e:'executive.mitchelldavid@gmail.com',r:'Executive Search Consultant',f:['Healthcare','Life Sciences','Regulatory Affairs'],img:'assets/team/mitchell-david.jpg'},
-  {n:'Maya Wun',e:'consultant.hayawu@gmail.com',r:'Senior Consultant | Executive Talent Mapping & Advisory',f:['Consumer','Retail','Strategic Operations'],img:'assets/team/maya-wun.jpg'}]
+  {n:'Cynthia Merlinda',e:'merlindacynthia@gmail.com',r:'Executive Search Consultant | Search & Intelligence Partner',f:['Industrial','Energy','Infrastructure']},
+  {n:'Mitchell David',e:'executive.mitchelldavid@gmail.com',r:'Executive Search Consultant',f:['Healthcare','Life Sciences','Regulatory Affairs']},
+  {n:'Maya Wun',e:'consultant.hayawu@gmail.com',r:'Senior Consultant | Executive Talent Mapping & Advisory',f:['Consumer','Retail','Strategic Operations']}]
 };
 const LOGO=(cls='')=>`<svg class="logo ${cls}" viewBox="0 0 64 76" aria-hidden="true" focusable="false"><path d="M6 64Q6 70 12 70H52Q58 70 58 64V32C58 15 47 5 32 5C17 5 6 15 6 32Z" fill="#181b1e" stroke="#A99A78" stroke-width="1.4"/><path d="M9.5 63Q9.5 66.5 13 66.5H51Q54.5 66.5 54.5 63V32C54.5 17 45 8.5 32 8.5C19 8.5 9.5 17 9.5 32Z" fill="none" stroke="#A99A78" stroke-opacity=".45" stroke-width=".6"/><g transform="translate(20.5 19.5) scale(.3)" fill="none" stroke="#F5F2EB" stroke-width="8" stroke-linecap="square"><path d="M10 104V8h34c20 0 28 10 28 24s-8 24-28 24H10M40 56l32 48"/></g><path d="M19 58H45" stroke="#A99A78" stroke-width=".8"/></svg>`;
 const ICO_G='<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 7l9 6.5L21 7"/></svg>';
@@ -744,26 +761,10 @@ const figures=()=>{
   const attrs=m?`data-pre="${m[1]}" data-count="${parseInt(m[2],10)}" data-suf="${m[3]}" data-pad="${m[2].length>1&&m[2][0]==='0'?m[2].length:0}"`:'';
   return `<div class="num rv"><span class="tick" aria-hidden="true"></span><div class="v ${val?'':'ph'}" ${attrs}>${val||f.ph}</div><div class="l">${f.l}</div>${f.v?'':`<span class="pend">${smp?'Sample figure. Replace with verified data before launch':'Pending verification'}</span>`}</div>`;}).join('')}</div>`;
 };
-
-const portrait = (p, small = true) => {
-  const name = typeof p === 'string' ? p : p.n;
-  const imgPath = typeof p === 'object' ? p.img : null;
-
-  if (imgPath) {
-    return `<div class="portrait" role="img" aria-label="Portrait of ${esc(name)}">
-      <img src="${imgPath}" alt="${esc(name)}" loading="lazy">
-    </div>`;
-  }
-
-  return `<div class="portrait" role="img" aria-label="Portrait placeholder for ${esc(name)}">
-    ${rm('', .8)}
-    <span>${INITIALS(name)}</span>${small ? '<small>Portrait to be supplied</small>' : ''}
-  </div>`;
-};
-
-const person=(p,tag='h3')=>`<article class="person rv">${portrait(p,false)}<div><${tag}>${p.n}</${tag}><p class="role">${p.r}</p><div class="focus">${p.f.map(x=>`<span class="chip">${x}</span>`).join('')}</div>${contactLinks(p)}</div></article>`;
+const portrait=(n,small=true)=>`<div class="portrait" role="img" aria-label="Portrait placeholder for ${esc(n)}">${rm('',.8)}<span>${INITIALS(n)}</span>${small?'<small>Portrait to be supplied</small>':''}</div>`;
+const person=(p,tag='h3')=>`<article class="person rv">${portrait(p.n,false)}<div><${tag}>${p.n}</${tag}><p class="role">${p.r}</p><div class="focus">${p.f.map(x=>`<span class="chip">${x}</span>`).join('')}</div>${contactLinks(p)}</div></article>`;
 const teamBlock=()=>`
-<div class="team-t1"><div class="rv">${portrait(TEAM.lead)}</div><div class="person rv"><p class="meta" style="color:var(--gold);margin-bottom:18px">Executive Leadership</p><h3 style="font-size:clamp(2.4rem,5vw,4rem)">${TEAM.lead.n}</h3><p class="role" style="font-size:15px">${TEAM.lead.r}</p><div class="focus">${TEAM.lead.f.map(x=>`<span class="chip">${x}</span>`).join('')}</div>${contactLinks(TEAM.lead)}</div></div>
+<div class="team-t1"><div class="rv">${portrait(TEAM.lead.n)}</div><div class="person rv"><p class="meta" style="color:var(--gold);margin-bottom:18px">Executive Leadership</p><h3 style="font-size:clamp(2.4rem,5vw,4rem)">${TEAM.lead.n}</h3><p class="role" style="font-size:15px">${TEAM.lead.r}</p><div class="focus">${TEAM.lead.f.map(x=>`<span class="chip">${x}</span>`).join('')}</div>${contactLinks(TEAM.lead)}</div></div>
 <div class="team-row"><h4>Senior Search Practice Leaders</h4><div class="t2">${TEAM.senior.map(p=>person(p)).join('')}</div></div>
 <div class="team-row"><h4>Industry &amp; Practice Specialists</h4><div class="t3">${TEAM.spec.map(p=>person(p)).join('')}</div></div>`;
 
@@ -799,7 +800,7 @@ const fld=(id,label,o={})=>{
  let c;
  if(o.sel) c=`<select ${a}><option value="">Select</option>${o.sel.map(x=>`<option>${x}</option>`).join('')}</select>`;
  else if(o.area) c=`<textarea ${a}></textarea>`;
- else c=`<input type="${o.type\vert{}\vert{}'text'}" ${a}>`;
+ else c=`<input type="${o.type||'text'}" ${a}>`;
  return `<div class="f"><label for="${id}">${label}${req}</label>${c}</div>`;
 };
 const consent=id=>`<div class="chk" style="margin:8px 0 24px"><input type="checkbox" id="${id}" required aria-required="true"><label for="${id}" style="margin:0;font-weight:400;letter-spacing:0;font-size:14px">I consent to ROYCE using the information provided to respond to this enquiry. See the <a href="#/privacy">Privacy Statement</a>.</label></div>`;
@@ -837,7 +838,8 @@ function home(){return `
  <div class="btnrow"><a class="btn" href="#/contact">Start a Confidential Conversation</a><a class="btn ghost" href="#/approach">Explore Our Approach</a></div></div>
  <p class="tag">Discreet Search. Exceptional Leadership.</p><span class="cue" aria-hidden="true"><i></i>Scroll</span></section>
 <section class="strip" aria-label="Practice areas"><div class="wrap"><ul>${['Executive Search','Board Search','C-Suite Appointments','Leadership Advisory','Talent Intelligence'].map(x=>`<li>${x}</li>`).join('')}</ul></div></section>
-${standardSec()}${numbersSec()}
+${standardSec()}
+${numbersSec()}
 <section class="sec stone" id="practices"><div class="wrap">${hd('Executive Search · Board Search · Leadership Advisory','Three practices. One standard of judgment.')}
  <div class="cols3">
  <article class="rv"><h3>The right executive changes more than a title.</h3><p class="soft">Search for CEOs, C-suite officers, business-unit and transformation leaders, assessed on relevance to the business context, not only on credentials.</p><a class="link tlink" href="#/executive-search">Executive Search</a></article>
@@ -855,7 +857,8 @@ ${standardSec()}${numbersSec()}
 <section class="sec light" id="method"><div class="wrap split"><div class="stick"><p class="eyebrow">Search Methodology</p><h2 class="h2 rv">Six stages, from mandate to appointment.</h2><p class="lede soft" style="margin-top:28px">A refined process that keeps the decision-maker informed at every stage.</p><a class="link tlink" href="#/approach">Our Approach</a></div>${stepsV(process6)}</div>
  <div class="wrap" style="margin-top:clamp(64px,8vw,112px)"><span class="badge">Illustrative assessment dimensions</span>${cells(score8,'g4',false)}<p class="note">Dimensions describe what a thorough assessment considers. No candidate scores are shown or implied.</p></div></section>
 <section class="sec dark" id="map"><div class="wrap">${hd('Executive Market Map','The leadership market, seen from different angles.','Choose a dimension to regroup the same universe of leaders. Relationships, not lists.')}${mapMarkup()}</div></section>
-${whySec()}${confSec()}
+${whySec()}
+${confSec()}
 <section class="sec light" id="signals"><div class="wrap">${hd('Leadership Signals','Analytical, not sensational.')}
  <div class="signals" style="margin-top:0"><div class="sig rv"><span class="meta">Leadership Signal</span><p>Transformation leadership increasingly requires both technological fluency and organizational judgment.</p></div><div class="sig rv"><span class="meta">Board Signal</span><p>Technology oversight is becoming a broader governance responsibility.</p></div><div class="sig rv"><span class="meta">Talent Signal</span><p>The strongest leadership markets often sit outside the most obvious industry boundaries.</p></div></div></div></section>
 <section class="sec dark2" id="team"><div class="wrap">${hd('Our Team','Founder-led. Team-supported. Specialist-driven.','A senior advisory group of six search consultants.')}${teamBlock()}<a class="link tlink" href="#/team">Meet the team</a></div></section>
@@ -864,7 +867,8 @@ ${boardroomSec()}
  <ul class="idx idx2">${['Executive Intelligence','Board Insights','Leadership Reports','Market Intelligence','Search Perspectives','Governance Notes','Executive Briefings','Succession','Technology Leadership'].map(c=>`<li>${c}<small>Library</small></li>`).join('')}</ul><a class="link tlink" href="#/insights">Search the Library</a></div></section>
 <section class="sec dark" id="for-execs"><div class="wrap split"><div class="stick"><p class="eyebrow">For Executives</p><h2 class="h2 rv">Your next leadership chapter should be approached with equal discretion.</h2><div class="btnrow">${btn('#/contact/executives','Submit an Executive Inquiry')}${btn('#/executives','For Executives','ghost')}</div></div>
  <ul class="grid g2" style="border-top:1px solid var(--hair-d)">${['Confidential opportunities','Board opportunities','Executive positioning','Board readiness','Career advisory','Leadership narrative','Market intelligence'].map(x=>`<li class="cell rv"><h3 style="font-size:1.6rem">${x}</h3></li>`).join('')}</ul></div></section>
-${privOffice()}${finalCta()}`;}
+${privOffice()}
+${finalCta()}`;}
 
 function boardroomSec(){return `<section class="sec light" id="boardroom"><div class="wrap">${hd('Boardroom Perspective','Perspective on how boards decide.','An editorial series on governance, risk and leadership. Perspectives are published only once reviewed and approved.')}
  <ul class="idx idx2">${['AI governance','Cyber risk','CEO succession','Board composition','Technology oversight','Executive compensation','Transformation leadership','Stakeholder complexity','Organizational resilience','Governance evolution'].map(x=>`<li>${x}<small>Forthcoming</small></li>`).join('')}</ul></div></section>`;}
@@ -944,5 +948,352 @@ function libRender(){
  const g=id=>document.getElementById(id).value, q=g('q').trim().toLowerCase();
  let r=LIB.filter(x=>(!q||(x.t+' '+x.topic+' '+x.cat+' '+x.ind+' '+x.fn).toLowerCase().includes(q))&&(!g('f-topic')||x.topic===g('f-topic'))&&(!g('f-ind')||x.ind===g('f-ind'))&&(!g('f-fn')||x.fn===g('f-fn'))&&(!g('f-aud')||x.aud===g('f-aud')));
  if(g('f-date')==='Oldest first') r=r.slice().reverse();
- document.getElementById('libcount').textContent=`${r.length}${r.length===1?'entry':'entries'}`;
- document.getElementById('libres').innerHTML=r.length?r.map(x=>`<article
+ document.getElementById('libcount').textContent=`${r.length} ${r.length===1?'entry':'entries'}`;
+ document.getElementById('libres').innerHTML=r.length?r.map(x=>`<article class="acard"><span class="cat">${x.cat}</span><h3>${x.t}</h3><p>${x.topic} · ${x.ind}</p><div class="st"><span>${x.aud}</span><span>In editorial development</span></div></article>`).join(''):`<div class="empty" style="grid-column:1/-1">No entries match these filters. Clear a filter or search a broader term.</div>`;
+}
+
+/* ---------- CONTACT ---------- */
+function contact(sub){const ex=sub==='executives';return pageHero('Contact','Some conversations should remain private.','Choose the pathway that fits. Please do not include information you would not want transmitted by a web form.')+
+`<section class="sec light"><div class="wrap split"><div class="stick"><p class="eyebrow">Official channels</p><h2 class="h3">Prefer to write directly?</h2><ul class="soft" style="margin-top:20px;font-size:15px"><li style="padding:6px 0">Email: ${esc(CONFIG.officialEmail)}</li><li style="padding:6px 0">Telephone: ${esc(CONFIG.officialPhone)}</li><li style="padding:6px 0">Domain: ${esc(CONFIG.officialDomain)}</li></ul><p class="note">Placeholders until verified firm details are supplied.</p><a class="link tlink" href="#/verify">Verify a ROYCE Search</a></div>
+<div><div class="tabs" role="tablist" aria-label="Pathway"><button type="button" role="tab" id="ct-0" aria-selected="${!ex}" aria-controls="cpanel" data-c="org" tabindex="${ex?-1:0}">Organizations &amp; Boards</button><button type="button" role="tab" id="ct-1" aria-selected="${ex}" aria-controls="cpanel" data-c="exec" tabindex="${ex?0:-1}">Executives</button></div><div id="cpanel" role="tabpanel" tabindex="0" style="padding-top:36px"></div></div></div></section>`;}
+function contactForm(kind){
+ const org=kind==='org';
+ return `<form class="formcard" id="cform" novalidate aria-label="${org?'Confidential mandate enquiry':'Executive inquiry'}"><h2 class="h3" style="margin-bottom:28px">${org?'Discuss a Confidential Mandate':'Submit an Executive Inquiry'}</h2>
+ <div class="frow two">${fld('c-name','Name',{req:1,auto:'name'})}${fld(org?'c-org':'c-role',org?'Organization':'Current role',{req:1})}</div>
+ <div class="frow two">${org?fld('c-role','Role',{}):fld('c-ind','Industry',{})}${fld('c-email','Email',{req:1,type:'email',auto:'email'})}</div>
+ <div class="frow two">${fld('c-phone','Phone (optional)',{type:'tel',auto:'tel'})}${org?fld('c-type','Mandate type',{sel:['Executive search','Board search','Leadership advisory','Not yet sure']}):fld('c-int','Executive interest',{sel:['Confidential opportunities','Executive positioning','Career advisory','Market intelligence']})}</div>
+ <div class="frow two">${org?fld('c-need','Leadership need',{}):fld('c-board','Board interest',{sel:['Currently serving','Interested in board roles','Not at this time']})}${org?fld('c-conf','Confidentiality preference',{sel:['Highly confidential','Confidential','Standard']}):fld('c-loc','Location',{})}</div>
+ <div class="frow">${fld('c-msg','Message',{area:1})}</div>${consent('c-consent')}<button class="btn" type="submit">${org?'Discuss a Confidential Mandate':'Submit an Executive Inquiry'}</button><div id="fmsg" role="status" aria-live="polite"></div></form>`;}
+
+/* ---------- VERIFY ---------- */
+function verify(){return pageHero('Executive Verification','Verify a ROYCE Search','If you have been contacted by someone representing ROYCE and would like to verify the approach, contact us directly through the official firm channels.')+
+`<section class="sec light"><div class="wrap split"><div class="stick"><p class="eyebrow">What you can verify</p><ul class="idx" style="margin-top:12px">${['Consultant identity','Official ROYCE email','Search reference','Firm contact information','Mandate status, where appropriate'].map(x=>`<li style="font-size:1.4rem">${x}</li>`).join('')}</ul></div>
+<div><div class="formcard"><h2 class="h3" style="margin-bottom:8px">Prepare a verification request</h2><p class="soft" style="margin-bottom:28px;font-size:15px">This page does not look up searches automatically. Details you enter are used to prepare a message to the official firm channels.</p>
+<form id="vform" novalidate>${fld('v-name','Consultant name',{req:1})}<div style="height:20px"></div>${fld('v-email','Email address that contacted you',{req:1,type:'email'})}<div style="height:20px"></div>${fld('v-ref','Search reference (if provided)',{ph:'e.g. RXP/BD/026'})}<div style="height:24px"></div><button class="btn" type="submit">Prepare verification request</button><div id="vmsg" role="status" aria-live="polite"></div></form></div>
+<p class="note">The reference format shown is illustrative only. No active searches are listed on this site. Legitimate ROYCE approaches come from the official firm domain and will never ask you for payment or sensitive personal documents.</p></div></div></section>`;}
+
+/* ---------- MANDATE / READINESS ---------- */
+function mandate(){return pageHero('Leadership Mandate Brief','Build a Leadership Mandate','Answer a few questions to produce a structured summary of the appointment you are considering.')+
+`<section class="sec light"><div class="wrap" style="max-width:960px"><div id="wz"></div><p class="note">This is an automated summary generated in your browser from your answers. It is not a formal consulting deliverable and has not been reviewed by ROYCE. In this preview, nothing you enter is transmitted or stored.</p></div></section>`;}
+function readiness(){return pageHero('Board Readiness Assessment','How prepared are you for the boardroom?','Twelve statements across six dimensions. This is an informational self-assessment. It is not a certification, accreditation or professional qualification.')+
+`<section class="sec light"><div class="wrap" style="max-width:960px"><div id="br"></div></div></section>`;}
+
+/* ---------- LEGAL / 404 ---------- */
+const legalWrap=(t,body)=>pageHero('Legal',t,'Draft placeholder text. To be reviewed by qualified counsel before launch.')+`<section class="sec light"><div class="wrap legal" style="max-width:860px">${body}</div></section>`;
+function privacy(){return legalWrap('Privacy Statement',`<h2>Information you provide</h2><p>When you submit a form, ROYCE uses the details you provide only to respond to your enquiry. Please avoid including sensitive personal information.</p><h2>Consent</h2><p>Forms request your consent before submission. You may withdraw consent by contacting ROYCE through its official channels.</p><h2>Cookies and analytics</h2><p>This preview loads no analytics or advertising cookies. Cookie Preferences in the footer records your choice for when analytics are introduced.</p><h2>Security</h2><p>Statements about specific encryption or security standards will be added only when the production infrastructure supports them.</p><h2>Contact</h2><p>Questions about data use: ${esc(CONFIG.officialEmail)}.</p>`);}
+function terms(){return legalWrap('Terms of Use',`<h2>Use of this site</h2><p>The content on this site is provided for general information about ROYCE Executive Partners and does not constitute professional advice.</p><h2>Illustrative content</h2><p>Frameworks, assessments and the Leadership Mandate Brief are illustrative and informational. They are not formal deliverables unless confirmed in writing by ROYCE.</p><h2>Intellectual property</h2><p>Site content is the property of ROYCE Executive Partners unless otherwise stated.</p><h2>Changes</h2><p>These terms may be updated. Final terms to be confirmed by counsel.</p>`);}
+function nf(){return `<section class="nf dark grain">${rm('wm',.8).replace('class="rmark wm"','class="rmark" style="position:absolute;right:2vw;top:5%;height:90%;color:var(--gold);opacity:.14"')}<div class="wrap" style="position:relative"><p class="eyebrow">404</p><h1 id="h1" class="display">The page has moved.</h1><p class="lede soft" style="margin-top:28px">Leadership rarely follows a straight line. Neither does this page.</p><div class="btnrow">${btn('#/','Return to ROYCE')}</div></div></section>`;}
+
+window.__P={home,firm,'executive-search':execSearch,'board-search':boardSearch,'leadership-advisory':advisory,approach,team,industries,executives,insights,contact,verify,mandate,'board-readiness':readiness,privacy,terms,nf,indBody,libRender,contactForm,fld};
+})();
+(function(){
+'use strict';
+const R=window.__R,P=window.__P;
+const {CONFIG,$,$$,esc,INTEL,INDUSTRIES,reduce,NAV}=R;
+
+R.renderShell();
+
+/* ---------- helpers ---------- */
+function split(root){
+ $$('.display,.page-hero h1,.h2,.ctaband h2,.nf h1',root).forEach(h=>{
+  if(h.dataset.sp||h.children.length)return;
+  h.dataset.sp=1;const t=h.textContent.trim();let i=0;
+  h.setAttribute('aria-label',t);
+  h.innerHTML=t.split(/\s+/).map(w=>`<span class="w" aria-hidden="true"><i style="--i:${i++}">${esc(w)}</i></span>`).join(' ');
+  h.classList.add('sp');h.classList.remove('rv');
+ });
+}
+function reveal(root){
+ split(root);
+ // staggered groups
+ $$('.strip li,.ill>div',root).forEach(e=>e.classList.add('rv'));
+ $$('.hero .lede,.page-hero .lede',root).forEach(e=>{e.classList.add('rv');e.style.transitionDelay='650ms';});
+ $$('.hero .btnrow,.page-hero .btnrow',root).forEach(e=>{e.classList.add('rv');e.style.transitionDelay='850ms';});
+ $$('.hero .tag,.hero .cue',root).forEach(e=>{e.classList.add('rv');e.style.transitionDelay='1100ms';});
+ $$('.cell,.sig,.pillars li,.acard,.hsteps>li,.num,.stmts li,.arch .box,.ill>div,.idx li,.person,.strip li,.cols3>article,.pm li',root).forEach(e=>{
+  const sibs=Array.from(e.parentElement.children);e.classList.add('rv');
+  e.style.transitionDelay=(Math.min(sibs.indexOf(e),8)*100)+'ms';
+ });
+ const els=$$('.rv,.steps li,.flow li,.eyebrow,.sp',root);
+ if(reduce||!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));countUp(root,true);return;}
+ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const t=e.target;t.classList.add('in');io.unobserve(t);
+  if(t.classList.contains('rv')){const d=parseFloat(t.style.transitionDelay)||0;setTimeout(()=>{t.classList.remove('rv');t.style.transitionDelay='';},d+1300);}}}),{rootMargin:'0px 0px -6% 0px',threshold:.06});
+ els.forEach(e=>io.observe(e));
+ countUp(root,false);
+}
+function countUp(root,skip){
+ $$('[data-count]',root).forEach(el=>{
+  const n=+el.dataset.count,pre=el.dataset.pre||'',suf=el.dataset.suf||'',pad=+el.dataset.pad||0;
+  const fmt=v=>pre+String(v).padStart(pad,'0')+suf;
+  if(skip){el.textContent=fmt(n);return;}
+  el.textContent=fmt(0);
+  const io=new IntersectionObserver(es=>{if(es[0].isIntersecting){io.disconnect();let t0=null;const step=t=>{if(!t0)t0=t;const p=Math.min((t-t0)/1900,1);const e=p>=1?1:1-Math.pow(2,-10*p);el.textContent=fmt(Math.round(n*e));if(p<1)requestAnimationFrame(step);};requestAnimationFrame(step);}},{threshold:.5});
+  io.observe(el);
+ });
+}
+function tabs(listSel,attr,cb){
+ const list=$(listSel);if(!list)return;
+ const btns=$$('[role=tab]',list.matches('[role=tablist]')?list:list);
+ const sel=b=>{btns.forEach(x=>{const on=x===b;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;});cb(b.dataset[attr],b);};
+ btns.forEach((b,i)=>{
+  b.addEventListener('click',()=>sel(b));
+  b.addEventListener('keydown',e=>{
+   const k=e.key;let n=null;
+   if(k==='ArrowRight'||k==='ArrowDown')n=(i+1)%btns.length;
+   if(k==='ArrowLeft'||k==='ArrowUp')n=(i-1+btns.length)%btns.length;
+   if(k==='Home')n=0;if(k==='End')n=btns.length-1;
+   if(n!==null){e.preventDefault();btns[n].focus();sel(btns[n]);}
+  });
+ });
+ return sel;
+}
+function formSubmit(form,msgEl,okText){
+ form.addEventListener('submit',e=>{
+  e.preventDefault();
+  $$('.errtxt',form).forEach(x=>x.remove());
+  let bad=null;
+  $$('[required]',form).forEach(f=>{
+   const ok=f.type==='checkbox'?f.checked:(f.value.trim()&&(f.type!=='email'||/^\S+@\S+\.\S+$/.test(f.value)));
+   if(!ok){f.setAttribute('aria-invalid','true');const p=document.createElement('div');p.className='errtxt';p.id=f.id+'-e';p.textContent=f.type==='checkbox'?'Consent is required to continue.':(f.type==='email'?'Enter a valid email address.':'This field is required.');f.closest('.f,.chk').appendChild(p);f.setAttribute('aria-describedby',p.id);if(!bad)bad=f;}
+   else{f.removeAttribute('aria-invalid');}
+  });
+  if(bad){bad.focus();msgEl.innerHTML='';return;}
+  if(CONFIG.formEndpoint){
+   const data=Object.fromEntries(new FormData(form).entries());
+   fetch(CONFIG.formEndpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).then(r=>{if(!r.ok)throw 0;msgEl.innerHTML=`<div class="msg">${okText}</div>`;form.reset();}).catch(()=>{msgEl.innerHTML='<div class="msg">Your message could not be sent. Please contact ROYCE through the official channels listed on this page.</div>';});
+  } else {
+   msgEl.innerHTML=`<div class="msg"><b>Preview mode.</b> Your details were not transmitted or stored, because this site is not yet connected to a secure form service. To reach ROYCE now, use the official channels on this page.</div>`;
+  }
+ });
+}
+
+/* ---------- market map ---------- */
+const DIMS=[
+ ['Financial Services','Technology','Industrial','Healthcare','Consumer'],
+ ['Region A','Region B','Region C','Region D'],
+ ['CEO','Finance','Technology','People','Operations'],
+ ['Early stage','Growth','Established','Global scale'],
+ ['Led transformation','Contributed to it','Not yet'],
+ ['Serving director','Committee experience','Not yet'],
+ ['Core','Adjacent','Limited'],
+ ['Same sector','Adjacent sector','Different sector']
+];
+function initMap(){
+ const svg=$('#mapsvg');if(!svg)return;
+ const N=40;const ns='http://www.w3.org/2000/svg';
+ // deterministic pseudo-random
+ let s=7;const rnd=()=>{s=(s*16807)%2147483647;return s/2147483647;};
+ const nodes=[];for(let i=0;i<N;i++)nodes.push({a:Math.floor(rnd()*100),o:[rnd(),rnd()],c:[rnd(),rnd()]});
+ const lines=[],dots=[],labs=[];
+ for(let i=0;i<N;i++){const l=document.createElementNS(ns,'line');l.setAttribute('stroke','#A99A78');l.setAttribute('stroke-opacity','.22');svg.appendChild(l);lines.push(l);}
+ for(let i=0;i<N;i++){const c=document.createElementNS(ns,'circle');c.setAttribute('r',2.5+nodes[i].c[0]*3.5);c.setAttribute('fill',i%7===0?'#A99A78':'#F5F2EB');c.setAttribute('fill-opacity',i%7===0?'1':'.8');c.setAttribute('class','d');c.style.animationDelay=(-(i%9))+'s';c.style.animationDuration=(7+(i%5))+'s';svg.appendChild(c);dots.push(c);}
+ const L=5;for(let i=0;i<L;i++){const t=document.createElementNS(ns,'text');t.setAttribute('text-anchor','middle');svg.appendChild(t);labs.push(t);}
+ function layout(d){
+  const cats=DIMS[d],k=cats.length;
+  const centers=cats.map((_,j)=>{
+   const cols=k<=3?k:(k===4?2:3);const rows=Math.ceil(k/cols);
+   const cx=900*((j%cols)+.5)/cols,cy=560*(Math.floor(j/cols)+.5)/rows;return [cx,cy-6];});
+  nodes.forEach((n,i)=>{
+   const j=n.a%k;const ctr=centers[j];const ang=n.o[0]*Math.PI*2,rad=26+n.o[1]*(k<=3?95:70);
+   const x=ctr[0]+Math.cos(ang)*rad*1.25,y=ctr[1]+Math.sin(ang)*rad*.9+8;
+   dots[i].setAttribute('cx',x.toFixed(1));dots[i].setAttribute('cy',y.toFixed(1));
+   lines[i].setAttribute('x1',ctr[0]);lines[i].setAttribute('y1',ctr[1]+8);lines[i].setAttribute('x2',x.toFixed(1));lines[i].setAttribute('y2',y.toFixed(1));
+  });
+  labs.forEach((t,j)=>{if(j<k){t.textContent=cats[j];t.setAttribute('x',centers[j][0]);t.setAttribute('y',centers[j][1]-(k<=3?118:92));t.style.opacity=1;}else{t.style.opacity=0;}});
+ }
+ if(reduce){layout(0);}else{nodes.forEach((n,i)=>{dots[i].setAttribute('cx',450);dots[i].setAttribute('cy',280);lines[i].setAttribute('x1',450);lines[i].setAttribute('y1',280);lines[i].setAttribute('x2',450);lines[i].setAttribute('y2',280);});labs.forEach(t=>t.style.opacity=0);const mo=new IntersectionObserver(es=>{if(es[0].isIntersecting){mo.disconnect();setTimeout(()=>layout(0),250);}},{threshold:.3});mo.observe(svg);}
+ if(reduce)svg.querySelectorAll('*').forEach(e=>e.style.transition='none');
+ $$('#dims button').forEach(b=>b.addEventListener('click',()=>{$$('#dims button').forEach(x=>x.setAttribute('aria-pressed',x===b));layout(+b.dataset.d);}));
+}
+
+/* ---------- mandate builder ---------- */
+function initMandate(){
+ const root=$('#wz');if(!root)return;
+ const d={};let step=0;
+ const F=R.__fld||null; const f=P.fld;
+ const caps=['Strategic leadership','Transformation','Technology and AI fluency','Financial discipline','Operating excellence','Stakeholder and investor engagement','Governance and risk','Talent and culture','Commercial growth','International experience'];
+ const steps=[
+  {t:'The organization and role',h:()=>`<div class="frow two">${f('m-org','Organization (use a descriptor if confidential)',{req:1})}${f('m-ind','Industry',{req:1,sel:INDUSTRIES.map(i=>i.n).concat(['Other'])})}</div><div class="frow">${f('m-role','Role to be filled',{req:1,ph:'e.g. Chief Executive Officer, Non-Executive Director'})}</div>`},
+  {t:'Business context',h:()=>`<div class="frow">${f('m-ch','What is the business challenge?',{req:1,area:1})}</div><div class="frow two">${f('m-stage','Growth stage',{req:1,sel:['Early stage','Scaling','Established','Mature','In turnaround or transition']})}${f('m-geo','Geography',{req:1})}</div><div class="frow">${f('m-tf','Transformation agenda (optional)',{area:1})}</div>`},
+  {t:'Leadership requirements',h:()=>`<div class="frow">${f('m-pri','Leadership priorities for the first 12–24 months',{req:1,area:1})}</div><fieldset><legend class="sr">Required capabilities</legend><p class="meta" style="margin-bottom:12px;color:var(--text-soft)">Required capabilities (choose up to five)</p><div class="chips" id="m-caps">${caps.map((c,i)=>`<label><input type="checkbox" value="${c}"><span>${c}</span></label>`).join('')}</div></fieldset><div class="frow">${f('m-board','Board involvement',{sel:['Reports to the board','Works closely with a committee','Limited board exposure','This is a board role']})}</div>`},
+  {t:'Confidentiality and timeline',h:()=>`<div class="frow two">${f('m-conf','Confidentiality level',{req:1,sel:['Highly confidential','Confidential','Standard']})}${f('m-time','Desired timeline',{req:1,sel:['Urgent (as soon as possible)','Within 3 months','3 to 6 months','Flexible']})}</div><p class="note">Please do not enter names of individuals or other information you would not want shown on screen.</p>`}
+ ];
+ function draw(){
+  const s=steps[step];
+  root.innerHTML=`<div class="wizard-top" aria-hidden="true">${steps.map((_,i)=>`<i class="${i<=step?'on':''}"></i>`).join('')}</div><form id="wf" novalidate><p class="meta" style="color:var(--gold-ink);margin-bottom:10px">Step ${step+1} of ${steps.length}</p><h2 class="h2" style="margin-bottom:32px" tabindex="-1" id="wh">${s.t}</h2>${s.h()}<div class="wnav">${step>0?'<button type="button" class="btn ghost" id="wb">Back</button>':'<span></span>'}<button class="btn" type="submit">${step===steps.length-1?'Generate the brief':'Continue'}</button></div></form>`;
+  Object.keys(d).forEach(k=>{const el=$('#'+k,root);if(el&&el.type!=='checkbox')el.value=d[k];});
+  if(step===2&&d.caps)$$('#m-caps input').forEach(i=>i.checked=d.caps.includes(i.value));
+  if(step===2)$('#m-caps').addEventListener('change',e=>{if($$('#m-caps input:checked').length>5){e.target.checked=false;}});
+  $('#wh').focus({preventScroll:true});
+  const back=$('#wb');if(back)back.onclick=()=>{save();step--;draw();};
+  $('#wf').addEventListener('submit',e=>{e.preventDefault();$$('.errtxt').forEach(x=>x.remove());let bad=null;$$('[required]',$('#wf')).forEach(x=>{if(!x.value.trim()){const p=document.createElement('div');p.className='errtxt';p.textContent='This field is required.';x.closest('.f').appendChild(p);if(!bad)bad=x;}});if(bad){bad.focus();return;}save();if(step<steps.length-1){step++;draw();window.scrollTo({top:$('#wz').getBoundingClientRect().top+window.scrollY-140});}else brief();});
+ }
+ function save(){$$('input,select,textarea',$('#wf')).forEach(x=>{if(x.id&&x.id.startsWith('m-')&&x.type!=='checkbox')d[x.id]=x.value;});if($('#m-caps'))d.caps=$$('#m-caps input:checked').map(i=>i.value);}
+ function brief(){
+  const ind=INDUSTRIES.find(i=>i.n===d['m-ind']);
+  const cp=(d.caps&&d.caps.length)?d.caps:['to be defined in discussion'];
+  const tl={'Urgent (as soon as possible)':'An accelerated search architecture with early market mapping and a compressed first-slate timetable, balancing speed against depth of assessment.','Within 3 months':'A focused retained-search architecture: mandate definition, rapid market mapping, targeted outreach and a finalist slate within the window.','3 to 6 months':'A full six-stage architecture, allowing broader market mapping, deeper assessment and considered stakeholder alignment.','Flexible':'A staged architecture that prioritises the quality of the mandate and market understanding before outreach begins.'}[d['m-time']];
+  const board=d['m-board']?` Board involvement: ${esc(d['m-board'].toLowerCase())}.`:'';
+  const sec=(t,b)=>`<section><h4>${t}</h4><div>${b}</div></section>`;
+  root.innerHTML=`<div class="brief" id="bf"><p class="meta" style="color:var(--gold-ink);margin-bottom:14px">Leadership Mandate Brief · Draft</p><h3 tabindex="-1" id="bh">${esc(d['m-role'])}</h3><p class="soft" style="margin-bottom:24px">${esc(d['m-org'])} · ${esc(d['m-ind'])} · ${esc(d['m-geo'])}</p>
+  ${sec('Context',`<p>${esc(d['m-org'])} is a ${esc(d['m-stage'].toLowerCase())} organization in ${esc(d['m-ind'])}. The stated business challenge: ${esc(d['m-ch'])}${d['m-tf']?` The transformation agenda: ${esc(d['m-tf'])}`:''}</p>`)}
+  ${sec('Leadership challenge',`<p>The appointment matters because the ${esc(d['m-role'])} must address the challenge above while delivering against these priorities: ${esc(d['m-pri'])}${board}</p>`)}
+  ${sec('Required capabilities',`<ul>${cp.map(c=>`<li>${esc(c)}</li>`).join('')}</ul>`)}
+  ${sec('Market',`<p>The search would begin in ${esc(d['m-ind'])} within ${esc(d['m-geo'])}, then extend to adjacent sectors where comparable complexity exists.${ind?` Typical leadership themes in this sector include ${ind.th.map(esc).join(', ').toLowerCase()}.`:''}</p>`)}
+  ${sec('Assessment',`<p>Candidates would be assessed on context, capability, character, complexity and contribution, with particular weight on ${cp.slice(0,3).map(c=>esc(c).toLowerCase()).join(', ')}.</p>`)}
+  ${sec('Timeline',`<p>${tl} Confidentiality level requested: ${esc(d['m-conf'].toLowerCase())}.</p>`)}
+  <p class="note">Automated summary generated from your answers. It is not a formal consulting deliverable and has not been reviewed by ROYCE.</p>
+  <div class="btnrow no-print"><a class="btn" href="#/contact">Discuss This Mandate Confidentially</a><button class="btn ghost" type="button" id="wr">Start again</button><button class="btn ghost" type="button" id="wp">Print or save as PDF</button></div></div>`;
+  $('#bh').focus();$('#wr').onclick=()=>{Object.keys(d).forEach(k=>delete d[k]);step=0;draw();};$('#wp').onclick=()=>window.print();
+ }
+ draw();
+}
+
+/* ---------- board readiness ---------- */
+function initReadiness(){
+ const root=$('#br');if(!root)return;
+ const DIM=['Strategic Perspective','Governance Fluency','Stakeholder Judgment','Risk Awareness','Technology Fluency','Board Communication'];
+ const Q=[
+  [0,'I regularly shape strategy at the enterprise level, not only within my function.'],
+  [0,'I can explain how my industry may look in ten years and what that means for the business.'],
+  [1,'I understand the respective roles of the board, its committees and management.'],
+  [1,'I can distinguish oversight from management and act accordingly.'],
+  [2,'I have built credibility with investors, regulators or other external stakeholders.'],
+  [2,'I can weigh competing stakeholder interests in a consequential decision.'],
+  [3,'I have led or advised through a material risk or crisis event.'],
+  [3,'I can read financial statements and challenge the assumptions behind them.'],
+  [4,'I can ask informed questions about technology, data and cyber risk without being a specialist.'],
+  [4,'I understand how AI and digital change affect strategy and risk in my sector.'],
+  [5,'I can communicate concisely and persuasively to a senior, non-executive audience.'],
+  [5,'I contribute independently in groups, including when my view differs from the room.']
+ ];
+ const opts=['Not yet','Partly','Largely','Strongly'];
+ const band=v=>v<1.75?'Emerging':v<2.5?'Developing':v<3.25?'Established':'Strong';
+ const note={'Emerging':'An area to build deliberately before a board role.','Developing':'Foundations exist; more exposure would strengthen this.','Established':'A clear area of capability.','Strong':'A distinguishing strength to bring to a board.'};
+ root.innerHTML=`<form id="bq" novalidate><div id="bqs">${Q.map((q,i)=>`<fieldset class="q"><legend class="sr">Statement ${i+1}</legend><p>${q[1]}</p><div class="scale" role="radiogroup" aria-label="Statement ${i+1}">${opts.map((o,j)=>`<label><input type="radio" name="q${i}" value="${j+1}" ${j===0?'required':''}><span>${o}</span></label>`).join('')}</div></fieldset>`).join('')}</div><div class="btnrow"><button class="btn" type="submit">See my Board Readiness Profile</button></div><div id="bqe" role="alert"></div></form>`;
+ $('#bq').addEventListener('submit',e=>{
+  e.preventDefault();
+  const miss=Q.findIndex((_,i)=>!$(`input[name=q${i}]:checked`));
+  if(miss>=0){$('#bqe').innerHTML=`<div class="errtxt">Please answer statement ${miss+1} to continue.</div>`;$(`input[name=q${miss}]`).focus();return;}
+  const sc=DIM.map((_,di)=>{const v=Q.map((q,i)=>q[0]===di?+$(`input[name=q${i}]:checked`).value:null).filter(x=>x);return v.reduce((a,b)=>a+b,0)/v.length;});
+  root.innerHTML=`<p class="meta" style="color:var(--gold-ink);margin-bottom:12px">Informational self-assessment</p><h2 class="h2" id="rh" tabindex="-1">Your Board Readiness Profile</h2><div class="bars">${DIM.map((n,i)=>{const b=band(sc[i]);return `<div class="bar2"><div class="top"><span>${n}</span><span>${b}</span></div><div class="track"><div class="fill" data-w="${(sc[i]/4*100).toFixed(0)}"></div></div><p>${note[b]}</p></div>`;}).join('')}</div><p class="note">This profile reflects your own answers. It is informational only and is not a certification, accreditation or objective professional qualification.</p><div class="btnrow"><a class="btn" href="#/contact/executives">Discuss Your Board Readiness</a><button class="btn ghost" type="button" id="brr">Retake</button></div>`;
+  $('#rh').focus();requestAnimationFrame(()=>requestAnimationFrame(()=>$$('.fill',root).forEach(f=>f.style.width=f.dataset.w+'%')));
+  $('#brr').onclick=initReadiness;
+ });
+}
+
+/* ---------- dialogs ---------- */
+const dlg=$('#dlg');
+function openDlg(kind){
+ let h;
+ if(kind==='login')h=`<h2 id="dlgt">Client Login</h2><p class="soft" style="margin-bottom:22px">Client Login will be activated when a secure, authenticated client portal is in place. It is designed to support active searches, candidate pipeline, reports and confidential communications.</p><button class="btn" type="button" data-close>Close</button>`;
+ else{let on=false;try{on=localStorage.getItem('royce-cookie-analytics')==='1';}catch(e){}
+  h=`<h2 id="dlgt">Cookie Preferences</h2><div class="switch"><div><b>Necessary</b><small>Required for the site to function. Always on.</small></div><span>On</span></div><div class="switch"><div><label for="ck"><b>Analytics</b></label><small>This preview loads no analytics. Your choice is recorded for when analytics are introduced.</small></div><input type="checkbox" id="ck" ${on?'checked':''} style="width:22px;height:22px;appearance:auto;-webkit-appearance:auto;accent-color:#111315"></div><div style="margin-top:20px"><button class="btn" type="button" data-close data-save>Save preferences</button></div>`;}
+ $('#dlgbody').innerHTML=h;
+ if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');
+}
+dlg.addEventListener('click',e=>{
+ if(e.target===dlg||e.target.closest('[data-close]')){
+  if(e.target.closest('[data-save]')){try{localStorage.setItem('royce-cookie-analytics',$('#ck').checked?'1':'0');}catch(err){}}
+  dlg.close();}
+});
+document.addEventListener('click',e=>{const o=e.target.closest('[data-open]');if(o){closeMenu();openDlg(o.dataset.open);}});
+
+/* ---------- menu ---------- */
+const burger=$('#burger'),menu=$('#menu');
+function closeMenu(){menu.classList.remove('open');menu.setAttribute('aria-hidden','true');burger.setAttribute('aria-expanded','false');burger.setAttribute('aria-label','Open menu');document.body.style.overflow='';}
+burger.addEventListener('click',()=>{const o=!menu.classList.contains('open');menu.classList.toggle('open',o);menu.setAttribute('aria-hidden',!o);burger.setAttribute('aria-expanded',o);burger.setAttribute('aria-label',o?'Close menu':'Open menu');document.body.style.overflow=o?'hidden':'';});
+menu.addEventListener('click',e=>{if(e.target.closest('a'))closeMenu();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
+let tick=false;
+function onScroll(){
+ tick=false;const y=window.scrollY;
+ $('#hdr').classList.toggle('scrolled',y>40);
+ const dh=document.documentElement.scrollHeight-window.innerHeight;
+ $('#sp').style.transform='scaleX('+(dh>0?Math.min(y/dh,1):0)+')';
+ const hero=$('.hero');if(hero&&!reduce&&y<1400)hero.style.setProperty('--py',(y*.1).toFixed(1)+'px');
+}
+window.addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(onScroll);}},{passive:true});
+
+/* ---------- router ---------- */
+const META={
+ '':['ROYCE Executive Partners | Executive Search, Board Search & Leadership Advisory','ROYCE Executive Partners advises organizations, boards and senior leaders through discreet executive search, board search and leadership advisory.'],
+ firm:['The Firm','An independent, highly selective executive search and leadership advisory partnership.'],
+ 'executive-search':['Executive Search','Retained executive search for CEO, C-suite and senior leadership mandates.'],
+ 'board-search':['Board Search','Board search focused on governance judgment, perspective and contribution.'],
+ 'leadership-advisory':['Leadership Advisory','Executive assessment, succession advisory, talent mapping and board readiness.'],
+ approach:['Our Approach','A six-stage search process built on mandate intelligence.'],
+ team:['Our Team','A founder-led, specialist-driven senior advisory group.'],
+ industries:['Industries','Six sectors approached as leadership markets.'],
+ executives:['For Executives','Confidential opportunities, board readiness and career advisory for senior leaders.'],
+ insights:['Insights','An institutional research library on executive and board leadership.'],
+ contact:['Contact','Some conversations should remain private.'],
+ verify:['Verify a ROYCE Search','Verify an approach from ROYCE through official firm channels.'],
+ mandate:['Build a Leadership Mandate','Generate a structured Leadership Mandate Brief.'],
+ 'board-readiness':['Board Readiness Assessment','An informational self-assessment of board readiness.'],
+ privacy:['Privacy Statement','How ROYCE uses information you provide.'],
+ terms:['Terms of Use','Terms for use of this site.']
+};
+const SUFFIX=' | ROYCE Executive Partners';
+let first=true;
+function route(){
+ const h=(location.hash||'#/').replace(/^#\/?/,'');const seg=h.split('/').filter(Boolean);
+ const key=seg[0]||'';
+ const page=key===''?P.home:P[key];
+ const main=$('#main');
+ const prog=$('#prog');
+ if(!first&&!reduce){prog.style.transition='none';prog.style.transform='scaleX(0)';requestAnimationFrame(()=>{prog.style.transition='transform .6s cubic-bezier(.22,.61,.36,1)';prog.style.transform='scaleX(1)';setTimeout(()=>{prog.style.transition='opacity .4s';prog.style.opacity='0';setTimeout(()=>{prog.style.transition='none';prog.style.transform='scaleX(0)';prog.style.opacity='1';},450);},650);});}
+ const valid=(key===''||(META[key]&&typeof page==='function'))&&key!=='nf'&&key!=='indBody'&&key!=='libRender'&&key!=='contactForm'&&key!=='fld';
+ main.innerHTML=valid?(key==='contact'?P.contact(seg[1]):page()):P.nf();
+ const m=valid?META[key]:['Page not found','The page has moved.'];
+ document.title=key===''?m[0]:m[0]+SUFFIX;
+ let md=$('meta[name=description]');if(md)md.content=m[1];
+ const crumbs=[{'@type':'ListItem',position:1,name:'Home',item:location.href.split('#')[0]}];
+ if(key)crumbs.push({'@type':'ListItem',position:2,name:m[0]});
+ $('#ld-crumbs').textContent=JSON.stringify({'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:crumbs});
+ $$('#nav a').forEach(a=>a.classList.toggle('on',a.dataset.r===key));
+ closeMenu();
+ window.scrollTo(0,0);
+ hydrate(valid?key:'nf',seg);
+ main.classList.remove('enter');void main.offsetWidth;main.classList.add('enter');
+ if(first&&document.documentElement.classList.contains('has-loader'))setTimeout(()=>reveal(main),2500);else reveal(main);
+ onScroll();
+ if(!first){const t=$('#h1',main);if(t){t.setAttribute('tabindex','-1');t.focus({preventScroll:true});}}
+ first=false;
+}
+function hydrate(key,seg){
+ if(key===''){
+  initMap();
+  const show=k=>{const x=INTEL[k];$('#ipanel').innerHTML=`<div class="panel-enter"><h3>${esc(k)}</h3><p class="lede soft">${esc(x.d)}</p></div><div class="panel-enter"><div class="sig" style="background:#fff"><span class="meta">${esc(k)} Signal</span><p>${esc(x.s)}</p></div><div class="themes" style="margin-top:22px">${x.t.map(t=>`<span class="chip">${esc(t)}</span>`).join('')}</div></div>`;const tb=$$('#ipanel')[0];const idx=Object.keys(INTEL).indexOf(k);tb.setAttribute('aria-labelledby','tab-'+idx);};
+  const s=tabs('[aria-label="Intelligence themes"]','k',show);show('Board');
+ }
+ if(key==='industries'){const show=i=>{$('#ibody').innerHTML=P.indBody(+i);$('#ibody').setAttribute('aria-labelledby','itab-'+i);};tabs('#indlist','i',show);show(0);}
+ if(key==='insights'){['q','f-topic','f-ind','f-fn','f-aud','f-date'].forEach(id=>{const e=document.getElementById(id);e.addEventListener('input',P.libRender);e.addEventListener('change',P.libRender);});P.libRender();}
+ if(key==='contact'){
+  const draw=k=>{$('#cpanel').innerHTML=P.contactForm(k);formSubmit($('#cform'),$('#fmsg'),'Thank you. ROYCE will respond through the official channels.');$('#cpanel').setAttribute('aria-labelledby',k==='org'?'ct-0':'ct-1');};
+  tabs('[aria-label=Pathway]','c',draw);draw(seg[1]==='executives'?'exec':'org');
+ }
+ if(key==='verify'){
+  $('#vform').addEventListener('submit',e=>{e.preventDefault();$$('.errtxt').forEach(x=>x.remove());let bad=null;['v-name','v-email'].forEach(id=>{const f=document.getElementById(id);const ok=f.value.trim()&&(id!=='v-email'||/^\S+@\S+\.\S+$/.test(f.value));if(!ok){const p=document.createElement('div');p.className='errtxt';p.textContent=id==='v-email'?'Enter a valid email address.':'This field is required.';f.closest('.f').appendChild(p);if(!bad)bad=f;}});if(bad){bad.focus();return;}
+   const dom=($('#v-email').value.split('@')[1]||'').toLowerCase();
+   $('#vmsg').innerHTML=`<div class="msg"><b>Next step.</b> Nothing has been sent or checked. Compare the sender’s domain (<b>${esc(dom)}</b>) with the official ROYCE domain (${esc(CONFIG.officialDomain)}), then contact ROYCE directly through ${esc(CONFIG.officialEmail)} or ${esc(CONFIG.officialPhone)}, quoting the consultant name${$('#v-ref').value?` and reference ${esc($('#v-ref').value)}`:''}.</div>`;});
+ }
+ if(key==='mandate')initMandate();
+ if(key==='board-readiness')initReadiness();
+}
+window.addEventListener('hashchange',route);
+
+/* ---------- boot ---------- */
+(function boot(){
+ let seen=false;try{seen=sessionStorage.getItem('royce-seen')==='1';}catch(e){}
+ const L=$('#loader');
+ if(!seen&&!reduce){document.documentElement.classList.add('has-loader');setTimeout(()=>{L.classList.add('done');setTimeout(()=>document.documentElement.classList.remove('has-loader'),1000);},2700);try{sessionStorage.setItem('royce-seen','1');}catch(e){}}
+ route();
+ $$('.fgrid>div,.fgrid>nav,.fbot').forEach((e,i)=>{e.classList.add('rv');e.style.transitionDelay=(i*90)+'ms';});
+ if(reduce||!('IntersectionObserver' in window))$$('#footer .rv').forEach(e=>e.classList.add('in'));else{const fo=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');fo.unobserve(x.target);}}),{threshold:.1});$$('#footer .rv').forEach(e=>fo.observe(e));}
+})();
+})();
+</script>
+</body></html>
+ROYCE Executive Partners.html
+Displaying ROYCE Executive Partners.html.
