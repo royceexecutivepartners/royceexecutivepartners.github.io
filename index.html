@@ -741,8 +741,23 @@ const figures=()=>{
   const attrs=m?`data-pre="${m[1]}" data-count="${parseInt(m[2],10)}" data-suf="${m[3]}" data-pad="${m[2].length>1&&m[2][0]==='0'?m[2].length:0}"`:'';
   return `<div class="num rv"><span class="tick" aria-hidden="true"></span><div class="v ${val?'':'ph'}" ${attrs}>${val||f.ph}</div><div class="l">${f.l}</div>${f.v?'':`<span class="pend">${smp?'Sample figure. Replace with verified data before launch':'Pending verification'}</span>`}</div>`;}).join('')}</div>`;
 };
-const portrait=(n,small=true)=>`<div class="portrait" role="img" aria-label="Portrait placeholder for ${esc(n)}">${rm('',.8)}<span>${INITIALS(n)}</span>${small?'<small>Portrait to be supplied</small>':''}</div>`;
-const person=(p,tag='h3')=>`<article class="person rv">${portrait(p.n,false)}<div><${tag}>${p.n}</${tag}><p class="role">${p.r}</p><div class="focus">${p.f.map(x=>`<span class="chip">${x}</span>`).join('')}</div>${contactLinks(p)}</div></article>`;
+const portrait = (p, small = true) => {
+  const name = typeof p === 'string' ? p : p.n;
+  const imgPath = typeof p === 'object' ? p.img : null;
+
+  if (imgPath) {
+    return `<div class="portrait" role="img" aria-label="Portrait of ${esc(name)}">
+      <img src="${imgPath}" alt="${esc(name)}" loading="lazy" onerror="console.error('FAILED TO LOAD IMAGE:', this.src); this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <span style="display:none;">${INITIALS(name)}</span>
+    </div>`;
+  }
+
+  return `<div class="portrait" role="img" aria-label="Portrait placeholder for ${esc(name)}">
+    ${rm('', .8)}
+    <span>${INITIALS(name)}</span>
+    ${small ? '<small>Portrait to be supplied</small>' : ''}
+  </div>`;
+};const person=(p,tag='h3')=>`<article class="person rv">${portrait(p.n,false)}<div><${tag}>${p.n}</${tag}><p class="role">${p.r}</p><div class="focus">${p.f.map(x=>`<span class="chip">${x}</span>`).join('')}</div>${contactLinks(p)}</div></article>`;
 const teamBlock=()=>`
 <div class="team-t1"><div class="rv">${portrait(TEAM.lead.n)}</div><div class="person rv"><p class="meta" style="color:var(--gold);margin-bottom:18px">Executive Leadership</p><h3 style="font-size:clamp(2.4rem,5vw,4rem)">${TEAM.lead.n}</h3><p class="role" style="font-size:15px">${TEAM.lead.r}</p><div class="focus">${TEAM.lead.f.map(x=>`<span class="chip">${x}</span>`).join('')}</div>${contactLinks(TEAM.lead)}</div></div>
 <div class="team-row"><h4>Senior Search Practice Leaders</h4><div class="t2">${TEAM.senior.map(p=>person(p)).join('')}</div></div>
