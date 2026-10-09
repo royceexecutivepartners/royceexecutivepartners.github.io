@@ -668,7 +668,8 @@ const INITIALS=n=>n.split(' ').map(w=>w[0]).join('');
 
 const INDUSTRIES=[
  {n:'Financial Services',ch:['Capital allocation and regulatory scrutiny','Technology-led operating change','Risk and governance expectations'],cap:['Regulatory credibility','Balance-sheet judgment','Enterprise risk leadership'],mand:['CEO and CFO','Chief Risk Officer','Business-unit leadership','Non-executive directors'],th:['Succession','Cyber and technology governance','Board composition']},
- {n:'Private Equity & Corporate Development',ch:['Value creation under defined time horizons','Operating leadership in portfolio companies','Integration and transformation'],cap:['Operating discipline','Investor and board communication','Transaction and integration experience'],mand:['Portfolio CEO and CFO','Operating partners','Corporate development leadership','Portfolio board roles'],th:['Operating leadership','Value creation','Transformation']},
+ {n:'Private Equity & Corporate Development',ch:['Value creation under defined time hor
+                                                 izons','Operating leadership in portfolio companies','Integration and transformation'],cap:['Operating discipline','Investor and board communication','Transaction and integration experience'],mand:['Portfolio CEO and CFO','Operating partners','Corporate development leadership','Portfolio board roles'],th:['Operating leadership','Value creation','Transformation']},
  {n:'Technology & Digital',ch:['Scaling organizations and platforms','AI and data leadership','Cyber risk and technology oversight'],cap:['Technology fluency','Product and engineering leadership','Enterprise accountability'],mand:['CTO and CIO','Chief Data and AI roles','Chief Product Officer','Technology-experienced directors'],th:['AI leadership','Cybersecurity governance','Digital transformation']},
  {n:'Industrial & Infrastructure',ch:['Capital-intensive planning cycles','Energy transition and asset complexity','Safety, regulation and stakeholder environments'],cap:['Operational excellence','Large-scale programme delivery','Stakeholder and regulator engagement'],mand:['COO and divisional leadership','Chief Executive roles','Transformation leaders','Non-executive directors'],th:['Transformation leadership','Operational resilience','Succession']},
  {n:'Healthcare & Life Sciences',ch:['Regulatory pathways and evidence requirements','Innovation alongside quality and safety','Complex stakeholder and payer environments'],cap:['Regulatory judgment','Scientific and commercial fluency','Quality and compliance leadership'],mand:['CEO and General Manager roles','Chief Medical and Regulatory leadership','Commercial leadership','Board roles'],th:['Regulatory leadership','Innovation governance','Talent availability']},
@@ -747,8 +748,7 @@ const portrait = (p, small = true) => {
 
   if (imgPath) {
     return `<div class="portrait" role="img" aria-label="Portrait of ${esc(name)}">
-      <img src="${imgPath}" alt="${esc(name)}" loading="lazy" onerror="console.error('FAILED TO LOAD IMAGE:', this.src); this.style.display='none'; this.nextElementSibling.style.display='block';">
-      <span style="display:none;">${INITIALS(name)}</span>
+      <img src="${imgPath}" alt="${esc(name)}" loading="lazy">
     </div>`;
   }
 
@@ -757,9 +757,16 @@ const portrait = (p, small = true) => {
     <span>${INITIALS(name)}</span>
     ${small ? '<small>Portrait to be supplied</small>' : ''}
   </div>`;
+};
+
+  return `<div class="portrait" role="img" aria-label="Portrait placeholder for ${esc(name)}">
+    ${rm('', .8)}
+    <span>${INITIALS(name)}</span>
+    ${small ? '<small>Portrait to be supplied</small>' : ''}
+  </div>`;
 };const person=(p,tag='h3')=>`<article class="person rv">${portrait(p.n,false)}<div><${tag}>${p.n}</${tag}><p class="role">${p.r}</p><div class="focus">${p.f.map(x=>`<span class="chip">${x}</span>`).join('')}</div>${contactLinks(p)}</div></article>`;
 const teamBlock=()=>`
-<div class="team-t1"><div class="rv">${portrait(TEAM.lead.n)}</div><div class="person rv"><p class="meta" style="color:var(--gold);margin-bottom:18px">Executive Leadership</p><h3 style="font-size:clamp(2.4rem,5vw,4rem)">${TEAM.lead.n}</h3><p class="role" style="font-size:15px">${TEAM.lead.r}</p><div class="focus">${TEAM.lead.f.map(x=>`<span class="chip">${x}</span>`).join('')}</div>${contactLinks(TEAM.lead)}</div></div>
+<div class="team-t1"><div class="rv">${portrait(TEAM.lead)}</div><div class="person rv"><p class="meta" style="color:var(--gold);margin-bottom:18px">Executive Leadership</p><h3 style="font-size:clamp(2.4rem,5vw,4rem)">${TEAM.lead.n}</h3><p class="role" style="font-size:15px">${TEAM.lead.r}</p><div class="focus">${TEAM.lead.f.map(x=>`<span class="chip">${x}</span>`).join('')}</div>${contactLinks(TEAM.lead)}</div></div>
 <div class="team-row"><h4>Senior Search Practice Leaders</h4><div class="t2">${TEAM.senior.map(p=>person(p)).join('')}</div></div>
 <div class="team-row"><h4>Industry &amp; Practice Specialists</h4><div class="t3">${TEAM.spec.map(p=>person(p)).join('')}</div></div>`;
 
