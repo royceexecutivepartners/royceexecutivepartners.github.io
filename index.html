@@ -572,6 +572,13 @@ button.btn[type=submit]::after,.wnav .btn::after{display:inline}
 @media(prefers-reduced-motion:reduce){.w>i{transform:none}.eyebrow{opacity:1}.eyebrow::before{transform:none}.num .tick{width:56px}.hero-art{animation:none}.page-hero .wm path{stroke-dashoffset:0}.steps li::before{transform:none}}
 [tabindex="-1"]:focus,[tabindex="-1"]:focus-visible{outline:none}
 @media print{#hdr,footer,#prog,#loader,.no-print,.page-hero,.note{display:none!important}body{background:#fff}.sec{padding:0}}
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
 </style>
 </head>
 <body>
@@ -650,7 +657,7 @@ const RL='<div class="rline" aria-hidden="true"></div>';
 const NAV=[['Firm','firm'],['Executive Search','executive-search'],['Board Search','board-search'],['Leadership Advisory','leadership-advisory'],['Our Approach','approach'],['Our Team','team'],['Industries','industries'],['For Executives','executives'],['Insights','insights']];
 
 /* ---------- DATA ---------- */
-const TEAM={
+const TEAM={  lead:{n:'George Royce',e:'professional.georgeroyce@gmail.com',r:'Founder & Managing Director | Senior Executive Search Consultant',f:['Board Search','Executive & C-Suite Appointments','Leadership Advisory'],img:'assets/team/george-royce.jpg'},  senior:[   {n:'Pius Excel',e:'partner.piusexcel@gmail.com',r:'Senior Executive Search Consultant | Practice Leader',f:['Financial Services','Private Equity','Corporate Development'],img:'assets/team/pius-excel.jpg'},   {n:'Alex Jefferson',e:'alexjefferson.uk@gmail.com',r:'Senior Executive Search Consultant',f:['Technology','Innovation','Digital Transformation'],img:'assets/team/alex-jefferson.jpg'}],  spec:[   {n:'Cynthia Merlinda',e:'merlindacynthia@gmail.com',r:'Executive Search Consultant | Search & Intelligence Partner',f:['Industrial','Energy','Infrastructure'],img:'assets/team/cynthia-merlinda.jpg'},   {n:'Mitchell David',e:'executive.mitchelldavid@gmail.com',r:'Executive Search Consultant',f:['Healthcare','Life Sciences','Regulatory Affairs'],img:'assets/team/mitchell-david.jpg'},   {n:'Maya Wun',e:'consultant.hayawu@gmail.com',r:'Senior Consultant | Executive Talent Mapping & Advisory',f:['Consumer','Retail','Strategic Operations'],img:'assets/team/maya-wun.jpg'}] };{
  lead:{n:'George Royce',e:'professional.georgeroyce@gmail.com',r:'Founder & Managing Director | Senior Executive Search Consultant',f:['Board Search','Executive & C-Suite Appointments','Leadership Advisory']},
  senior:[
   {n:'Pius Excel',e:'partner.piusexcel@gmail.com',r:'Senior Executive Search Consultant | Practice Leader',f:['Financial Services','Private Equity','Corporate Development']},
